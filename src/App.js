@@ -1,70 +1,35 @@
 import React, { Component } from 'react';
-import ReduxToastr from 'react-redux-toastr';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { Sidebar } from 'semantic-ui-react';
-import { withRouter } from 'react-router';
+import { HashRouter as Router, Route, Link } from 'react-router-dom';
 
-import { isMenuVisible } from './components/NavBar/reducer';
-import { closeMenu } from './components/NavBar/actions';
-import NavBar from './components/NavBar';
-import SideMenu from './views/SideMenu';
+import { Layout, Header, Drawer, Navigation, Content } from 'react-mdl';
 
-import './App.css';
+import About from './components/About';
+import Home from './components/Home';
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-
-    this.hideSidebar = this.hideSidebar.bind(this);
-  }
-
-  hideSidebar() {
-    if (this.props.sideMenuVisible) {
-      this.props.closeMenu();
+const RouteHideDrawer = ({ component: Component, ...rest }) => (
+  <Route {...rest} render={() => {
+    if (document.querySelector('.mdl-layout__drawer')) {
+      document.querySelector('.mdl-layout__obfuscator').classList.remove('is-visible');
+      document.querySelector('.mdl-layout__drawer').classList.remove('is-visible');
     }
-  }
+    return <Component/>
+  }}/>
+)
 
-  render() {
-    return (
-      <div>
-        <ReduxToastr
-          timeOut={4000}
-          newestOnTop
-          preventDuplicates
-          position="top-center"
-          transitionIn="fadeIn"
-          transitionOut="fadeOut"
-        />
-        <Sidebar.Pushable>
-          <SideMenu isVisible={this.props.sideMenuVisible} closeMenu={this.props.closeMenu} />
-          <Sidebar.Pusher dimmed={this.props.sideMenuVisible} onClick={this.hideSidebar}>
-            <NavBar />
-            {this.props.children}
-          </Sidebar.Pusher>
-        </Sidebar.Pushable>
-      </div>
-    );
-  }
-}
-
-App.propTypes = {
-  sideMenuVisible: PropTypes.bool.isRequired,
-  closeMenu: PropTypes.func.isRequired,
-  children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]),
-};
-
-App.defaultProps = {
-  children: null,
-};
-
-const mapStateToProps = state => ({
-  sideMenuVisible: isMenuVisible(state.navbar),
-});
-
-export default withRouter(
-  connect(
-    mapStateToProps,
-    { closeMenu },
-  )(App),
+export default () => (
+  <Router>
+    <Layout fixedHeader>
+      <Header title="PWA"/>
+      <Drawer title="PWA">
+        <Navigation>
+          <Link to="/">Home</Link>
+          <Link to="/about">About</Link>
+        </Navigation>
+      </Drawer>
+      <Content>
+        <RouteHideDrawer exact path="/" component={ Home } />
+        <RouteHideDrawer path="/about" component={ About } />
+      </Content>
+    </Layout>
+  </Router>
 );
