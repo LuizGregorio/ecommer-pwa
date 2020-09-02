@@ -1,10 +1,3 @@
-Simple progressive web app starter kit
+**DEPRECATED**
 
-[See also, rewrite in Preact with material components web](https://github.com/paulhoughton/preact-pwa)
-
-Command|Description
---- | ---
-*npm start*|Start application with hot reloading enabled
-*npm run build*|Minified build with offline capabilities
-
-![Demo](https://github.com/paulhoughton/react-pwa/blob/gh-pages/demo.gif)
+Similar functionality is now part of the official `create-react-app` project: https://github.com/facebookincubator/create-react-app/pull/1728

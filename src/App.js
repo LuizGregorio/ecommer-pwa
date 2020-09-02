@@ -1,35 +1,21 @@
 import React, { Component } from 'react';
-import { HashRouter as Router, Route, Link } from 'react-router-dom';
+import logo from './logo.svg';
+import './App.css';
 
-import { Layout, Header, Drawer, Navigation, Content } from 'react-mdl';
+class App extends Component {
+  render() {
+    return (
+      <div className="App">
+        <div className="App-header">
+          <img src={logo} className="App-logo" alt="logo" />
+          <h2>Welcome to React</h2>
+        </div>
+        <p className="App-intro">
+          To get started, edit <code>src/App.js</code> and save to reload.
+        </p>
+      </div>
+    );
+  }
+}
 
-import About from './components/About';
-import Home from './components/Home';
-
-const RouteHideDrawer = ({ component: Component, ...rest }) => (
-  <Route {...rest} render={() => {
-    if (document.querySelector('.mdl-layout__drawer')) {
-      document.querySelector('.mdl-layout__obfuscator').classList.remove('is-visible');
-      document.querySelector('.mdl-layout__drawer').classList.remove('is-visible');
-    }
-    return <Component/>
-  }}/>
-)
-
-export default () => (
-  <Router>
-    <Layout fixedHeader>
-      <Header title="PWA"/>
-      <Drawer title="PWA">
-        <Navigation>
-          <Link to="/">Home</Link>
-          <Link to="/about">About</Link>
-        </Navigation>
-      </Drawer>
-      <Content>
-        <RouteHideDrawer exact path="/" component={ Home } />
-        <RouteHideDrawer path="/about" component={ About } />
-      </Content>
-    </Layout>
-  </Router>
-);
+export default App;
