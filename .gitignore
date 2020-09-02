@@ -1,6 +1,1 @@
-node_modules/
-static/sw.js
-.next
-out
-*-error.log
-yarn.lock
+/node_modules

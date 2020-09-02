@@ -1,5 +1,4 @@
 {
-  "presets": [
-    [ "next/babel" ]
-  ]
+	"presets": ["es2015", "react"],
+  "plugins": ["react-hot-loader/babel", "transform-object-rest-spread"]
 }
