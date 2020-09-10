@@ -42,7 +42,7 @@ class PrimaryNav extends React.Component {
               }
             </div>
             <div className="col-xs-6 PrimaryNav-logo_container text-center">
-              <h1 className="PrimaryNav-logo"><a href="#/">Simple PWA</a></h1>
+              <h1 className="PrimaryNav-logo"><a href="#/">A</a></h1>
             </div>
             <div className="col-xs-3 PrimaryNav-button_search_container text-center">
               { onPostItem === false ?
