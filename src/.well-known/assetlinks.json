@@ -1,5 +1,10 @@
-[{
-  "relation": ["delegate_permission/common.handle_all_urls"],
-  "target" : { "namespace": "android_app", "package_name": "https://cranky-bardeen-ce6297.netlify.app/",
-               "sha256_cert_fingerprints": ["F5:D4:90:26:C1:7D:2C:7E:5A:5E:2A:F9:03:D1:14:4E:79:8F:8F:9C:4F:EE:2E:EA:C2:B7:C3:9A:B7:1B:D8:A2"] }
-}]
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "xyz.appmaker.zryobp",
+      "sha256_cert_fingerprints": ["1E:9B:DA:22:AF:30:35:56:BA:39:C6:8D:3D:69:51:6F:C2:E5:39:35:E2:54:2E:44:0B:4C:E9:78:BD:95:D4:C9"]
+    }
+  }
+]
